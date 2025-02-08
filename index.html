@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Coming Soon</title>
+  <style>
+    body, html {
+      height: 100%;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: 'Arial', sans-serif;
+      color: #fff;
+      background: linear-gradient(135deg, #1a1a1a 0%, #434343 100%);
+      overflow: hidden;
+    }
+
+    .coming-soon {
+      text-align: center;
+      animation: fadeIn 2s ease-in-out;
+    }
+
+    h1 {
+      font-size: 4em;
+      margin-bottom: 0.5em;
+      font-weight: bold;
+    }
+
+    p {
+      font-size: 1.5em;
+      margin-top: 0;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+
+    @keyframes backgroundAnimation {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .background {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      background: linear-gradient(135deg, #1a1a1a 0%, #434343 100%);
+      background-size: 400% 400%;
+      animation: backgroundAnimation 15s ease infinite;
+    }
+
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 2.5em;
+      }
+      p {
+        font-size: 1em;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="background"></div>
+  <div class="coming-soon">
+    <h1>Coming Soon</h1>
+    <p>Stay tuned for something amazing!</p>
+  </div>
+  <script>
+    // JavaScript can be added here for additional interactivity
+  </script>
+</body>
+</html>
