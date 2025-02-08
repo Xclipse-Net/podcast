@@ -1,83 +1,197 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Coming Soon</title>
-  <style>
-    body, html {
-      height: 100%;
-      margin: 0;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-family: 'Arial', sans-serif;
-      color: #fff;
-      background: linear-gradient(135deg, #1a1a1a 0%, #434343 100%);
-      overflow: hidden;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Coming Soon</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    .coming-soon {
-      text-align: center;
-      animation: fadeIn 2s ease-in-out;
-    }
+        body {
+            font-family: 'Arial', sans-serif;
+            background: #141414;
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+            text-align: center;
+        }
 
-    h1 {
-      font-size: 4em;
-      margin-bottom: 0.5em;
-      font-weight: bold;
-    }
+        .container {
+            position: relative;
+            z-index: 10;
+        }
 
-    p {
-      font-size: 1.5em;
-      margin-top: 0;
-    }
+        .coming-soon {
+            animation: fadeIn 2s ease-in-out;
+        }
 
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-      }
-      to {
-        opacity: 1;
-      }
-    }
+        h1 {
+            font-size: 5rem;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            color: #FF3C8A;
+            animation: pulse 1.5s infinite ease-in-out, glow 2s infinite alternate;
+        }
 
-    @keyframes backgroundAnimation {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
+        p {
+            font-size: 1.5rem;
+            letter-spacing: 2px;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 30px;
+            animation: fadeIn 2s ease-in-out;
+        }
 
-    .background {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: -1;
-      background: linear-gradient(135deg, #1a1a1a 0%, #434343 100%);
-      background-size: 400% 400%;
-      animation: backgroundAnimation 15s ease infinite;
-    }
+        .countdown {
+            font-size: 2.5rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+        }
 
-    @media (max-width: 600px) {
-      h1 {
-        font-size: 2.5em;
-      }
-      p {
-        font-size: 1em;
-      }
-    }
-  </style>
+        .countdown span {
+            padding: 20px 30px;
+            background: linear-gradient(45deg, #ff3c8a, #ff9a9e);
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(255, 60, 138, 0.6);
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .countdown span:hover {
+            transform: scale(1.1);
+            box-shadow: 0 10px 30px rgba(255, 60, 138, 0.8);
+        }
+
+        .background-effect {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://www.transparenttextures.com/patterns/triangles.png');
+            background-size: 150px 150px;
+            opacity: 0.1;
+            z-index: 1;
+            animation: moveBg 30s infinite linear;
+        }
+
+        .footer {
+            margin-top: 40px;
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.7);
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        .footer a {
+            color: #FF3C8A;
+            text-decoration: none;
+            font-weight: bold;
+            margin: 0 10px;
+        }
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.1);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        @keyframes glow {
+            0% {
+                text-shadow: 0 0 5px #FF3C8A, 0 0 10px #FF3C8A, 0 0 20px #FF3C8A;
+            }
+            100% {
+                text-shadow: 0 0 20px #FF3C8A, 0 0 30px #FF3C8A, 0 0 50px #FF3C8A;
+            }
+        }
+
+        @keyframes moveBg {
+            0% {
+                transform: translateX(0) translateY(0);
+            }
+            100% {
+                transform: translateX(100%) translateY(100%);
+            }
+        }
+
+    </style>
 </head>
 <body>
-  <div class="background"></div>
-  <div class="coming-soon">
-    <h1>Coming Soon</h1>
-    <p>Stay tuned for something amazing!</p>
-  </div>
-  <script>
-    // JavaScript can be added here for additional interactivity
-  </script>
+
+<div class="background-effect"></div>
+
+<div class="container">
+    <div class="coming-soon">
+        <h1>Coming Soon</h1>
+        <p>Something exciting is on its way!</p>
+        <div class="countdown">
+            <span id="days"></span>
+            <span id="hours"></span>
+            <span id="minutes"></span>
+            <span id="seconds"></span>
+        </div>
+    </div>
+</div>
+
+<div class="footer">
+    <p>Made by <span style="font-weight: bold;">ttvleeroy</span></p>
+    <p>Visit me on:</p>
+    <p>
+        <a href="https://www.instagram.com/ttvleeroym" target="_blank">Instagram @ttvleeroym</a> | 
+        <a href="https://www.tiktok.com/@ttvleeroym" target="_blank">TikTok @ttvleeroym</a> | 
+        <a href="https://www.snapchat.com/add/ttvleeroy.m" target="_blank">Snapchat @ttvleeroy.m</a>
+    </p>
+</div>
+
+<script>
+    const countdownDate = new Date("Mar 1, 2025 00:00:00").getTime();
+
+    const countdownFunction = setInterval(function() {
+
+        const now = new Date().getTime();
+        const distance = countdownDate - now;
+
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        document.getElementById("days").innerHTML = days + "d";
+        document.getElementById("hours").innerHTML = hours + "h";
+        document.getElementById("minutes").innerHTML = minutes + "m";
+        document.getElementById("seconds").innerHTML = seconds + "s";
+
+        if (distance < 0) {
+            clearInterval(countdownFunction);
+            document.getElementById("countdown").innerHTML = "It's Here!";
+        }
+    }, 1000);
+</script>
+
 </body>
 </html>
